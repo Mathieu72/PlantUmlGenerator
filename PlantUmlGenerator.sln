@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagramGenerators", "Diagra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolePlantUmlGenerator", "ConsolePlantUmlGenerator\ConsolePlantUmlGenerator.csproj", "{350328F7-2DA6-4852-B2B2-B98951DC6BB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{749850FB-C88F-45B3-A3F2-2ED18A24BFDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{350328F7-2DA6-4852-B2B2-B98951DC6BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{350328F7-2DA6-4852-B2B2-B98951DC6BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{350328F7-2DA6-4852-B2B2-B98951DC6BB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{749850FB-C88F-45B3-A3F2-2ED18A24BFDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{749850FB-C88F-45B3-A3F2-2ED18A24BFDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{749850FB-C88F-45B3-A3F2-2ED18A24BFDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{749850FB-C88F-45B3-A3F2-2ED18A24BFDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

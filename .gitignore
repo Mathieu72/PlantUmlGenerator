@@ -8,3 +8,7 @@ DiagramGenerators/bin/
 ConsolePlantUmlGenerator/bin/
 
 ConsolePlantUmlGenerator/obj/
+
+Tests/bin/
+
+Tests/obj/
