@@ -1,17 +1,27 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using DiagramGenerators.Results;
+
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 
 namespace DiagramGenerators
 {
     public interface IClassDiagramGenerator
     {
-        void Generate(SyntaxNode root);
+        void Generate(string file, SyntaxNode root);
     }
 
     public class ClassDiagramGenerator : CSharpSyntaxWalker, IClassDiagramGenerator
     {
-        public void Generate(SyntaxNode root)
+        private readonly IAnalysisResultBuilder resultBuilder;
+
+        public ClassDiagramGenerator()
         {
+            this.resultBuilder = new AnalysisResultBuilder();
+        }
+
+        public void Generate(string file, SyntaxNode root)
+        {
+            this.resultBuilder.BuildFileNode(file);
             Visit(root);
         }
     }
