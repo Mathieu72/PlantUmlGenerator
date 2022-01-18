@@ -7,22 +7,29 @@ namespace DiagramGenerators
 {
     public interface IClassDiagramGenerator
     {
-        void Generate(string file, SyntaxNode root);
+        IAnalysisResult Generate(string file, SyntaxNode root);
     }
 
     public class ClassDiagramGenerator : CSharpSyntaxWalker, IClassDiagramGenerator
     {
         private readonly IAnalysisResultBuilder resultBuilder;
+        private static IClassDiagramGenerator instance;
 
-        public ClassDiagramGenerator()
+        public static IClassDiagramGenerator Instance
+        {
+            get => instance ??= new ClassDiagramGenerator();
+        }
+
+        private ClassDiagramGenerator()
         {
             this.resultBuilder = new AnalysisResultBuilder();
         }
 
-        public void Generate(string file, SyntaxNode root)
+        public IAnalysisResult Generate(string file, SyntaxNode root)
         {
             this.resultBuilder.BuildFileNode(file);
             Visit(root);
+            return resultBuilder.Result;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DiagramGenerators;
+using DiagramGenerators.Results;
 
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Text;
@@ -6,6 +7,7 @@ using Microsoft.CodeAnalysis.Text;
 using NUnit.Framework;
 
 using System.IO;
+using System.Linq;
 
 namespace Tests
 {
@@ -13,22 +15,26 @@ namespace Tests
     {
         public const string CSHARP_FILE = @"C:\Users\preve\Documents\CodeProjects\CSharp\UMLDiagramGenerator\PlantUmlGenerator\Tests\Data\CustomerDescriptor.cs";
 
-        private void Analyze(string file)
+        private IAnalysisResult Analyze(string file)
         {
             using (var stream = new FileStream(file, FileMode.Open, FileAccess.Read))
             {
                 var tree = CSharpSyntaxTree.ParseText(SourceText.From(stream));
                 var root = tree.GetRoot();
 
-                var gen = new ClassDiagramGenerator();
-                gen.Generate(file, root);
+                return ClassDiagramGenerator.Instance.Generate(file, root);
             }
         }
 
         [Test]
         public void Test001_Scenario()
         {
-            Analyze(CSHARP_FILE);
+            var result = Analyze(CSHARP_FILE);
+
+            //Check file nodes
+            CollectionAssert.AreEqual(
+                new[] { CSHARP_FILE }, 
+                result.FileNodes.Select(f => f.Path));
         }
     }
 }
