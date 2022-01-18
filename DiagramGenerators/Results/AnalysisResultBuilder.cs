@@ -24,7 +24,6 @@ namespace DiagramGenerators.Results
             this.nodeFactory = nodeFactory;
         }
 
-        // TODO: add tests [preve, 18/01/2022]
         public void BuildFileNode(string file)
         {
             var fileNode = nodeFactory.CreateFileNode(file);
